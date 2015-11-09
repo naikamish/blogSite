@@ -1,0 +1,11 @@
+<template name="newPost">
+	{{#each getPosts}}
+  		<li>{{postTitle}}.{{postContent}}</li>
+	{{/each}}
+
+ 	<form>
+ 		<input type="text" id="postTitle">
+ 		<textarea id="postContent"></textarea>
+ 		<input type="submit" value="Submit">
+ 	</form>
+</template>
