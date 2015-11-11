@@ -1,6 +1,11 @@
 <template name="newPost">
 	{{#each getPosts}}
-  		<li><a href="/post/{{_id}}">{{postTitle}}</a>.{{postContent}}</li>
+  		<a href="/posts/{{_id}}">{{postTitle}}</a>
+  		<br>
+  		{{postContent}}
+  		<br>
+  		{{postComments.length}}
+  		<br>
 	{{/each}}
 
 	Post Title:<input type="text" id="postTitle">
@@ -10,7 +15,7 @@
 </template>
 
 <template name="blogPage">
-	{{postTitle}}.{{postContent}}
+	{{postTitle}}<br>{{postContent}}
 	<br>
 	Add Comment
 	<br>
