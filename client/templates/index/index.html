@@ -1,11 +1,26 @@
 <template name="newPost">
 	{{#each getPosts}}
-  		<li>{{postTitle}}.{{postContent}}</li>
+  		<li><a href="/post/{{_id}}">{{postTitle}}</a>.{{postContent}}</li>
 	{{/each}}
 
- 	<form>
- 		<input type="text" id="postTitle">
- 		<textarea id="postContent"></textarea>
+	Post Title:<input type="text" id="postTitle">
+	Post Content:<textarea id="postContent"></textarea>
+	<button id="addPost">Add</button>
+	<button id="removePosts">Remove All</button>
+</template>
+
+<template name="blogPage">
+	{{postTitle}}.{{postContent}}
+	<br>
+	Add Comment
+	<br>
+	<ul>
+    {{#each getComments}}
+        {{comment}}
+    {{/each}}
+    </ul>
+	<form>
+ 		<textarea id="postComment"></textarea>
  		<input type="submit" value="Submit">
  	</form>
 </template>

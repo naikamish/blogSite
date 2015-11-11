@@ -7,6 +7,10 @@ Meteor.startup(function () {
       };
 
       BlogPosts.insert(blogPost);
-    }
+    },
+
+    removeAllPosts: function() {
+        return BlogPosts.remove({});
+      }
   });
 });
