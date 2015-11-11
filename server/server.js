@@ -10,7 +10,20 @@ Meteor.startup(function () {
     },
 
     removeAllPosts: function() {
-        return BlogPosts.remove({});
-      }
+      return BlogPosts.remove({});
+    },
+
+    addComment: function(postID, postComment){
+      let comment = {
+      	'comment':postComment
+      };
+
+      BlogPosts.update(
+		{_id:postID},
+		{$push:
+		  {'postComments':comment}
+		}
+	  );
+    }
   });
 });
