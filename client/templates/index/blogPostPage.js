@@ -1,4 +1,4 @@
-Template.blogPage.events({
+Template.blogPostPage.events({
 	'submit form': function(event, template){
 		event.preventDefault();
 		let postComment = template.find('#postComment').value;

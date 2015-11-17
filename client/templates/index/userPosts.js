@@ -1,4 +1,10 @@
-Template.newPost.events({
+Template.userPosts.helpers({
+	getPosts: function(){
+		return this;
+    }
+});
+
+Template.userPosts.events({
 	'click #addPost': function(event,template){
 		event.preventDefault();
 		let postTitle = template.find('#postTitle').value;

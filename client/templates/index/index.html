@@ -1,4 +1,4 @@
-<template name="newPost">
+<template name="userPosts">
 	{{#each getPosts}}
   		<a href="/{{userID}}/{{_id}}">{{postTitle}}</a>
   		<br>
@@ -7,14 +7,16 @@
   		{{postComments.length}}
   		<br>
 	{{/each}}
+</template>
 
+<template name="newPost">
 	Post Title:<input type="text" id="postTitle">
 	Post Content:<textarea id="postContent"></textarea>
 	<button id="addPost">Add</button>
 	<button id="removePosts">Remove All</button>
 </template>
 
-<template name="blogPage">
+<template name="blogPostPage">
 	{{postTitle}}<br>{{postContent}}
 	<br>
 	Add Comment
@@ -32,8 +34,7 @@
 
 <template name="loginTemplate">
 	{{> loginButtons}}
-	<br>
-	<a href="{{pathFor route='newPost'}}">Blog</a>
+	<a href="{{pathFor route='newPost'}}">New Post</a>
 	<br><br><br>
 	{{#each getUsers}}
 		<a href="/{{_id}}">{{_id}}</a><br>
