@@ -1,6 +1,6 @@
 <template name="newPost">
 	{{#each getPosts}}
-  		<a href="/posts/{{_id}}">{{postTitle}}</a>
+  		<a href="/{{userID}}/{{_id}}">{{postTitle}}</a>
   		<br>
   		{{postContent}}
   		<br>
@@ -28,4 +28,14 @@
  		<textarea id="postComment"></textarea>
  		<input type="submit" value="Submit">
  	</form>
+</template>
+
+<template name="loginTemplate">
+	{{> loginButtons}}
+	<br>
+	<a href="{{pathFor route='newPost'}}">Blog</a>
+	<br><br><br>
+	{{#each getUsers}}
+		<a href="/{{_id}}">{{_id}}</a><br>
+	{{/each}}
 </template>

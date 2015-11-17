@@ -1,7 +1,8 @@
 Meteor.startup(function () {
   return Meteor.methods({
-    addPost: function(postTitle, postContent) {
+    addPost: function(postTitle, postContent, userID) {
       let blogPost = {
+        'userID': userID,
         'postTitle': postTitle,
         'postContent': postContent
       };

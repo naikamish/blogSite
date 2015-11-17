@@ -1,6 +1,6 @@
 Template.newPost.helpers({
 	getPosts: function(){
-		return BlogPosts.find();
+		return this;
     }
 });
 
@@ -9,7 +9,8 @@ Template.newPost.events({
 		event.preventDefault();
 		let postTitle = template.find('#postTitle').value;
 		let postContent = template.find('#postContent').value;
-  		Meteor.call('addPost', postTitle, postContent)
+		let currentUser = Meteor.userId();
+  		Meteor.call('addPost', postTitle, postContent, currentUser)
 	},
 
 	'click #removePosts': function(event,template){
