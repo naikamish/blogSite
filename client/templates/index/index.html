@@ -5,14 +5,13 @@
 		</div>
 		{{#each getPosts}}
 			<div class="row">
-				<div class="col-xs-6 col-xs-offset-3 postDiv">
-			  		<a href="/{{userID}}/{{_id}}">{{postTitle}}</a>
+				<div class="col-xs-10 col-xs-offset-1 postDiv">
+			  		<a href="/{{userID}}/{{_id}}"><h3>{{postTitle}}</h3></a>
 			  		<br>
 			  		{{postContent}}
-			  		<br>
-			  		{{postTimestamp}}
-			  		<br>
-			  		{{postComments.length}}
+			  		<br><br>
+			  		<span class="post-footer">Posted on {{postTimestamp}} | {{postComments.length}} comments</span>
+			  		<br><br>
 		  		</div>
 	  		</div>
 	  		<br><br><br>
