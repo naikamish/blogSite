@@ -8,9 +8,3 @@ Template.addComment.events({
 		Meteor.call('addComment', postID, commentContent, currentUser, commentTimestamp);
 	}
 });
-
-Template.addComment.helpers({
-	postComments: function(){
-		
-    }
-});
