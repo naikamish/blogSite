@@ -1,10 +1,11 @@
 Meteor.startup(function () {
   return Meteor.methods({
-    addPost: function(postTitle, postContent, userID) {
+    addPost: function(postTitle, postContent, userID, postTimestamp) {
       let blogPost = {
         'userID': userID,
         'postTitle': postTitle,
-        'postContent': postContent
+        'postContent': postContent,
+        'postTimestamp':postTimestamp
       };
 
       BlogPosts.insert(blogPost);
@@ -14,9 +15,11 @@ Meteor.startup(function () {
       return BlogPosts.remove({});
     },
 
-    addComment: function(postID, postComment){
+    addComment: function(postID, commentContent, commentUserID, commentTimestamp){
       let comment = {
-      	'comment':postComment
+        'commentUserID':commentUserID,
+      	'commentContent':commentContent,
+        'commentTimestamp':commentTimestamp
       };
 
       BlogPosts.update(
@@ -28,3 +31,8 @@ Meteor.startup(function () {
     }
   });
 });
+
+//
+
+
+//

@@ -1,0 +1,16 @@
+Template.addComment.events({
+	'submit form': function(event, template){
+		event.preventDefault();
+		let commentContent = template.find('#postComment').value;
+		let postID = this._id;
+		let currentUser = Meteor.userId();
+		let commentTimestamp = new Date();
+		Meteor.call('addComment', postID, commentContent, currentUser, commentTimestamp);
+	}
+});
+
+Template.addComment.helpers({
+	postComments: function(){
+		
+    }
+});

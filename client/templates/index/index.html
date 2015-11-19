@@ -4,26 +4,33 @@
   		<br>
   		{{postContent}}
   		<br>
-  		{{postComments.length}}
+  		{{postTimestamp}}
   		<br>
+  		{{postComments.length}}
+  		<br><br><br>
 	{{/each}}
 </template>
 
-<template name="newPost">
+<template name="addPost">
 	Post Title:<input type="text" id="postTitle">
 	Post Content:<textarea id="postContent"></textarea>
 	<button id="addPost">Add</button>
 	<button id="removePosts">Remove All</button>
 </template>
 
-<template name="blogPostPage">
+<template name="addComment">
 	{{postTitle}}<br>{{postContent}}
 	<br>
 	Add Comment
 	<br>
 	<ul>
     {{#each postComments}}
-        {{comment}}<br>
+    	{{commentUserID}}
+    	<br>
+        {{commentContent}}
+        <br>
+        {{commentTimestamp}}
+        <br><br><br>
     {{/each}}
     </ul>
 	<form>
@@ -34,7 +41,7 @@
 
 <template name="loginTemplate">
 	{{> loginButtons}}
-	<a href="{{pathFor route='newPost'}}">New Post</a>
+	<a href="{{pathFor route='addPost'}}">New Post</a>
 	<br><br><br>
 	{{#each getUsers}}
 		<a href="/{{_id}}">{{_id}}</a><br>
