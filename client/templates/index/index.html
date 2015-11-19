@@ -1,14 +1,23 @@
 <template name="userPosts">
-	{{#each getPosts}}
-  		<a href="/{{userID}}/{{_id}}">{{postTitle}}</a>
-  		<br>
-  		{{postContent}}
-  		<br>
-  		{{postTimestamp}}
-  		<br>
-  		{{postComments.length}}
-  		<br><br><br>
-	{{/each}}
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<h1>My Blog</h1>
+		</div>
+		{{#each getPosts}}
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-3 postDiv">
+			  		<a href="/{{userID}}/{{_id}}">{{postTitle}}</a>
+			  		<br>
+			  		{{postContent}}
+			  		<br>
+			  		{{postTimestamp}}
+			  		<br>
+			  		{{postComments.length}}
+		  		</div>
+	  		</div>
+	  		<br><br><br>
+		{{/each}}
+	</div>
 </template>
 
 <template name="addPost">

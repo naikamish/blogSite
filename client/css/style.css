@@ -5,3 +5,15 @@ textarea{
 #navbar-logo{
 	max-width:100px;
 }
+
+body{
+	background: url("images/background.png");
+}
+
+.jumbotron{
+	background-color:#fff;
+}
+
+.postDiv{
+	background-color:#fff;
+}
