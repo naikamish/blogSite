@@ -1,5 +1,5 @@
 <template name="userPosts">
-	<div class="container-fluid">
+	<div class="container-fluid container-userPosts">
 		<div class="jumbotron">
 			<h1>My Blog</h1>
 		</div>
@@ -19,48 +19,108 @@
 	</div>
 </template>
 
-<template name="addPost">
-	Post Title:<input type="text" id="postTitle">
-	Post Content:<textarea id="postContent"></textarea>
-	<button id="addPost">Add</button>
-	<button id="removePosts">Remove All</button>
-</template>
-
 <template name="addComment">
-	{{postTitle}}<br>{{postContent}}
-	<br>
-	Add Comment
-	<br>
-	<ul>
-    {{#each postComments}}
-    	{{commentUserID}}
-    	<br>
-        {{commentContent}}
-        <br>
-        {{commentTimestamp}}
-        <br><br><br>
-    {{/each}}
-    </ul>
-	<form>
- 		<textarea id="postComment"></textarea>
- 		<input type="submit" value="Submit">
- 	</form>
+	<div class="container-fluid container-userPosts">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 postDiv">
+		  		<a href="/{{userID}}/{{_id}}"><h3>{{postTitle}}</h3></a>
+		  		<br>
+		  		{{postContent}}
+	  		</div>
+		</div>
+		<br><br><br>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 postDiv">
+				<h2>Comments</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 postDiv">
+			    {{#each postComments}}
+			    	<span class="bold-span">{{commentUserID}}</span>
+			    	<br>
+			        {{commentContent}}
+			        <br>
+			        <span class="comment-footer">{{commentTimestamp}}</span>
+			        <br><br><br>
+			    {{/each}}
+	    	</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 postDiv">
+				<h4>Add Comment</h4>
+				<form>
+			 		<textarea id="postComment"></textarea><br>
+			 		<input type="submit" value="Submit">
+			 	</form>
+		 	</div>
+	 	</div>
+ 	</div>
 </template>
 
 <template name="loginTemplate">
-	{{> loginButtons}}
-	<a href="{{pathFor route='addPost'}}">New Post</a>
-	<br><br><br>
-	{{#each getUsers}}
-		<a href="/{{_id}}">{{_id}}</a><br>
-	{{/each}}
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Dashboard<span class="sr-only">(current)</span></a></li>
+            <li><a href="/addPost">Create Post</a></li>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">Comments</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome Back {{loggedInUser}}</h1>
+        </div>
+        <div class="row">
+        	{{#each getUsers}}
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+		        	<a href="/{{_id}}">{{_id}}</a>
+		        </div>
+	        {{/each}}
+        </div>
+      </div>
+    </div>
+</template>
+
+<template name="addPost">
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="/">Dashboard</a></li>
+            <li class="active"><a href="#">Create Post<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Posts</a></li>
+            <li><a href="#">Comments</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Create Post</h1>
+        </div>
+        <div class="row">
+	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+	        	Post Title
+	        	<br>
+	        	<input type="text" id="postTitle">
+	        	<br><br>
+				Post Content
+				<br>
+				<textarea id="postContent"></textarea>
+				<br>
+				<button id="addPost">Add</button>
+				<br>
+				<button id="removePosts">Remove All</button>
+	        </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <template name="topNavBar">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-		    	<a class="navbar-brand" href="/"><img id="navbar-logo" src="images/logo.png" /></a>
+		    	<a class="navbar-brand" href="/"><img id="navbar-logo" src="images/logo2.png" /></a>
 		    </div>
 		    <ul class="nav navbar-nav navbar-right">
 		        {{> loginButtons align="right"}}

@@ -1,13 +1,24 @@
 textarea{
 	resize:none;
+	width:50%;
+	height:200px;
 }
+
+body {
+    padding-top: 50px;
+  }
 
 #navbar-logo{
 	max-width:100px;
 }
 
-body{
-	background: url("images/background.png");
+.container-userPosts{
+	background: url("images/background.png") fixed no-repeat 100% 100%;
+}
+
+.container-dashboard{
+	height:100vh;
+	background-color:#000;
 }
 
 .jumbotron{
@@ -18,6 +29,10 @@ body{
 	background-color:#fff;
 }
 
-.post-footer{
+.post-footer, .comment-footer{
 	color:#aaa;
+}
+
+.bold-span{
+	font-weight:bold;
 }
