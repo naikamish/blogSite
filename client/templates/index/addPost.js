@@ -11,6 +11,6 @@ Template.addPost.events({
 	},
 
 	'click #removePosts': function(event,template){
-		Meteor.call('removeAllPosts')
+		Meteor.call('removeAllPosts');
 	}
 });

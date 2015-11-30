@@ -1,0 +1,164 @@
+<template name="loginTemplate">
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Dashboard<span class="sr-only">(current)</span></a></li>
+            <li><a href="/addPost">Create Post</a></li>
+            <li><a href="/managePosts">Posts</a></li>
+            <li><a href="/manageYourComments">Your Comments</a></li>
+            <li><a href="/manageBlogComments">Blog Comments</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Welcome Back {{loggedInUser}}</h1>
+        </div>
+        <div class="row">
+        	{{#each getUsers}}
+		        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+		        	<a href="/{{_id}}">{{_id}}</a>
+		        </div>
+	        {{/each}}
+        </div>
+      </div>
+    </div>
+</template>
+
+<template name="addPost">
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li><a href="/">Dashboard</a></li>
+            <li class="active"><a href="#">Create Post<span class="sr-only">(current)</span></a></li>
+            <li><a href="/managePosts">Posts</a></li>
+            <li><a href="/manageYourComments">Your Comments</a></li>
+            <li><a href="/manageBlogComments">Blog Comments</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">Create Post</h1>
+        </div>
+        <div class="row">
+	        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+	        	Post Title
+	        	<br>
+	        	<input type="text" id="postTitle">
+	        	<br><br>
+				Post Content
+				<br>
+				<textarea id="postContent"></textarea>
+				<br>
+				<button id="addPost">Add</button>
+				<br>
+				<button id="removePosts">Remove All</button>
+	        </div>
+        </div>
+      </div>
+    </div>
+</template>
+
+<template name="managePosts">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/addPost">Create Post</a></li>
+                    <li class="active"><a href="#">Posts<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/manageYourComments">Your Comments</a></li>
+                    <li><a href="/manageBlogComments">Blog Comments</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Manage Posts</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <form name="postsForm">
+                        {{#each getPosts}}
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
+                            </label>
+                        </div>
+                        {{/each}}
+                        <div>
+                            <input type="submit" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="manageYourComments">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/addPost">Create Post</a></li>
+                    <li><a href="/managePosts">Posts</a></li>
+                    <li class="active"><a href="#">Your Comments<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/manageBlogComments">Blog Comments</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Manage Posts</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <form name="postsForm">
+                        {{#each getPosts}}
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
+                            </label>
+                        </div>
+                        {{/each}}
+                        <div>
+                            <input type="submit" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="manageBlogComments">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/addPost">Create Post</a></li>
+                    <li><a href="/managePosts">Posts</a></li>
+                    <li><a href="/manageYourComments">Your Comments</a></li>
+                    <li class="active"><a href="#">Your Comments<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Manage Posts</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <form name="postsForm">
+                        {{#each getPosts}}
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
+                            </label>
+                        </div>
+                        {{/each}}
+                        <div>
+                            <input type="submit" value="Delete">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

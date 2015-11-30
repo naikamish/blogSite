@@ -15,6 +15,10 @@ Meteor.startup(function () {
       return BlogPosts.remove({});
     },
 
+    removePosts: function(postID){
+      return BlogPosts.remove({'_id':{'$in':postID}});
+    },
+
     addComment: function(postID, commentContent, commentUserID, commentTimestamp){
       let comment = {
         'commentUserID':commentUserID,
@@ -23,16 +27,11 @@ Meteor.startup(function () {
       };
 
       BlogPosts.update(
-		{_id:postID},
-		{$push:
-		  {'postComments':comment}
-		}
-	  );
+		    {_id:postID},
+		    {$push:
+		      {'postComments':comment}
+		    }
+	    );
     }
   });
 });
-
-//
-
-
-//
