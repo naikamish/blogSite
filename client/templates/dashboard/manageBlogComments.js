@@ -1,10 +1,10 @@
-Template.manageYourComments.helpers({
+Template.manageBlogComments.helpers({
 	getComments: function(){
-		return BlogComments.find({'commentUserID':Meteor.userId()})
+		return BlogComments.find({'postUserID':Meteor.userId()})
 	}
 });
 
-Template.manageYourComments.events({
+Template.manageBlogComments.events({
 	'submit form': function(event, template){
 		event.preventDefault();
 		var values = [];

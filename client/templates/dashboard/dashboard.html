@@ -8,6 +8,7 @@
             <li><a href="/managePosts">Posts</a></li>
             <li><a href="/manageYourComments">Your Comments</a></li>
             <li><a href="/manageBlogComments">Blog Comments</a></li>
+            <li><a href="/manageProfile">Edit Profile</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -19,6 +20,11 @@
 		        	<a href="/{{_id}}">{{_id}}</a>
 		        </div>
 	        {{/each}}
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+            <button id="hello">Hello</button>
+            </div>
+
         </div>
       </div>
     </div>
@@ -34,6 +40,7 @@
             <li><a href="/managePosts">Posts</a></li>
             <li><a href="/manageYourComments">Your Comments</a></li>
             <li><a href="/manageBlogComments">Blog Comments</a></li>
+            <li><a href="/manageProfile">Edit Profile</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -68,6 +75,7 @@
                     <li class="active"><a href="#">Posts<span class="sr-only">(current)</span></a></li>
                     <li><a href="/manageYourComments">Your Comments</a></li>
                     <li><a href="/manageBlogComments">Blog Comments</a></li>
+                    <li><a href="/manageProfile">Edit Profile</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -103,20 +111,21 @@
                     <li><a href="/managePosts">Posts</a></li>
                     <li class="active"><a href="#">Your Comments<span class="sr-only">(current)</span></a></li>
                     <li><a href="/manageBlogComments">Blog Comments</a></li>
+                    <li><a href="/manageProfile">Edit Profile</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Manage Posts</h1>
+                <h1 class="page-header">Manage Your Comments</h1>
             </div>
             <div class="row">
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
                     <form name="postsForm">
-                        {{#each getPosts}}
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
-                            </label>
-                        </div>
+                        {{#each getComments}}
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="posts" value="{{_id}}">{{commentContent}}
+                                </label>
+                            </div>
                         {{/each}}
                         <div>
                             <input type="submit" value="Delete">
@@ -137,25 +146,75 @@
                     <li><a href="/addPost">Create Post</a></li>
                     <li><a href="/managePosts">Posts</a></li>
                     <li><a href="/manageYourComments">Your Comments</a></li>
-                    <li class="active"><a href="#">Your Comments<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="#">Blog Comments<span class="sr-only">(current)</span></a></li>
+                    <li><a href="/manageProfile">Edit Profile</a></li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header">Manage Posts</h1>
+                <h1 class="page-header">Manage Blog Comments</h1>
             </div>
             <div class="row">
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
                     <form name="postsForm">
-                        {{#each getPosts}}
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
-                            </label>
-                        </div>
+                        {{#each getComments}}
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="posts" value="{{_id}}">{{commentContent}}
+                                </label>
+                            </div>
                         {{/each}}
                         <div>
                             <input type="submit" value="Delete">
                         </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="manageProfile">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/addPost">Create Post</a></li>
+                    <li><a href="/managePosts">Posts</a></li>
+                    <li><a href="/manageYourComments">Your Comments</a></li>
+                    <li><a href="/manageBlogComments">Blog Comments</a></li>
+                    <li class="active"><a href="#">Edit Profile<span class="sr-only">(current)</span></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <h1 class="page-header">Manage Profile</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                    <form class="form-horizontal">
+                      <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">First Name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="firstName">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="lastName">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="blogTitle" class="col-sm-2 control-label">Blog Title</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="blogTitle">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <input type="submit" class="btn btn-default" value="Submit">
+                        </div>
+                      </div>
                     </form>
                 </div>
             </div>

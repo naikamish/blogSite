@@ -19,19 +19,42 @@ Meteor.startup(function () {
       return BlogPosts.remove({'_id':{'$in':postID}});
     },
 
-    addComment: function(postID, commentContent, commentUserID, commentTimestamp){
+    removeComments: function(commentID){
+      return BlogComments.remove({'_id':{'$in':commentID}});
+    },
+
+    addComment: function(postID, postUserID, commentContent, commentUserID, commentTimestamp){
       let comment = {
         'commentUserID':commentUserID,
+        'postUserID':postUserID,
+        'postID':postID,
       	'commentContent':commentContent,
         'commentTimestamp':commentTimestamp
       };
 
-      BlogPosts.update(
+      /*BlogPosts.update(
 		    {_id:postID},
 		    {$push:
 		      {'postComments':comment}
 		    }
-	    );
+	    );*/
+      BlogComments.insert(comment);
+    },
+
+    editProfile: function(userID, firstName, lastName, blogTitle){
+      Meteor.users.update(userID,{$set:{'profile.firstName': firstName, 'profile.lastName':lastName, 'profile.blogTitle':blogTitle  }});
     }
   });
 });
+
+if (Meteor.isServer) {
+  Accounts.onCreateUser(function(options, user) {
+    if(!options.profile){
+      options.profile = {}
+    }
+   //options.profile.permission = 'default'
+    if (options.profile)
+      user.profile = options.profile;
+    return user;
+  });
+}
