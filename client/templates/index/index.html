@@ -1,5 +1,5 @@
 <template name="userPosts">
-	<div class="container-fluid container-userPosts">
+	<!--<div class="container-fluid container-userPosts">
 		<div class="jumbotron">
 			<h1>My Blog</h1>
 		</div>
@@ -10,13 +10,41 @@
 			  		<br>
 			  		{{postContent}}
 			  		<br><br>
-			  		<span class="post-footer">Posted on {{postTimestamp}} | {{postComments.length}} comments</span>
+			  		<span class="post-footer">Posted on {{postTimestamp}}</span>
 			  		<br><br>
 		  		</div>
 	  		</div>
 	  		<br><br><br>
 		{{/each}}
-	</div>
+	</div>-->
+
+<!--	{{{headerTemplate}}}
+	{{#each getPosts}}
+	{{{postStartTemplate}}}
+	{{userID}}/{{_id}}
+	{{{postLinksTemplate}}}
+	{{postTitle}}
+	{{{postTitleTemplate}}}
+	{{postContent}}
+	{{{postContentTemplate}}}
+	{{postTimestamp}}
+	{{{postTimestampTemplate}}}
+	{{/each}}
+	{{{footerTemplate}}}-->
+
+
+	{{headerTemplate}}
+	{{#each getPosts}}
+	{{postStartTemplate}}
+	{{postLinksTemplate}}
+	{{postTitle}}
+	{{postTitleTemplate}}
+	{{postContent}}
+	{{postContentTemplate}}
+	{{postTimestamp}}
+	{{postTimestampTemplate}}
+	{{/each}}
+	{{footerTemplate}}
 </template>
 
 <template name="addComment">

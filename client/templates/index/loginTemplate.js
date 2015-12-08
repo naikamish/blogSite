@@ -1,4 +1,4 @@
-Template.loginTemplate.helpers({
+Template.dashboardHome.helpers({
 	loggedInUser: function(){
     	return Meteor.userId();
     },
