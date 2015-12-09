@@ -70,13 +70,22 @@
 <template name="managePosts">
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
-            {{#each getPosts}}
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="posts" value="{{_id}}">{{postTitle}}
-                </label>
-            </div>
-            {{/each}}
+            <table class="table table-hover">
+                    <tr>
+                        <th> </th>
+                        <th>Blog Title</th>
+                        <th>Post Date</th>
+                    </tr>
+                <tbody>
+                    {{#each getPosts}}
+                    <tr>
+                        <td><input type="checkbox" name="posts" value="{{_id}}"></td>
+                        <td>{{postTitle}}</td>
+                        <td>{{postTimestamp}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
             <div>
                 <input type="submit" value="Delete">
             </div>
@@ -87,13 +96,22 @@
 <template name="manageYourComments">
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
-            {{#each getComments}}
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="posts" value="{{_id}}">{{commentContent}}
-                    </label>
-                </div>
-            {{/each}}
+            <table class="table table-hover">
+                    <tr>
+                        <th> </th>
+                        <th>Comment</th>
+                        <th>Post Date</th>
+                    </tr>
+                <tbody>
+                    {{#each getComments}}
+                    <tr>
+                        <td><input type="checkbox" name="posts" value="{{_id}}"></td>
+                        <td>{{commentContent}}</td>
+                        <td>{{commentTimestamp}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
             <div>
                 <input type="submit" value="Delete">
             </div>
@@ -104,13 +122,24 @@
 <template name="manageBlogComments">
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
-            {{#each getComments}}
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="posts" value="{{_id}}">{{commentContent}}
-                    </label>
-                </div>
-            {{/each}}
+            <table class="table table-hover">
+                    <tr>
+                        <th> </th>
+                        <th>Comment</th>
+                        <th>User</th>
+                        <th>Post Date</th>
+                    </tr>
+                <tbody>
+                    {{#each getComments}}
+                    <tr>
+                        <td><input type="checkbox" name="posts" value="{{_id}}"></td>
+                        <td>{{commentContent}}</td>
+                        <td>{{commentUserID}}</td>
+                        <td>{{commentTimestamp}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
             <div>
                 <input type="submit" value="Delete">
             </div>
