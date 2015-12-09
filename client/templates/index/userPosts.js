@@ -5,7 +5,7 @@ Template.userPosts.onRendered( function () {
                         '<span class="post-footer">Posted on {{postTimestamp}}</span><br><br></div></div>'+
                         '<br><br><br>{{/each}}</div>';*/
 
-    let template = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1>My Blog</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
+    let template = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1 id='blogTitle'>My Blog</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
     if(BlogTemplate.find({'userID':Template.currentData()}).fetch().length===0)
         BlogTemplate.insert({'userID':Template.currentData(), 'template':template});
     else
