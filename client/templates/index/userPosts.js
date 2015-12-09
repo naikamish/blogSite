@@ -4,15 +4,37 @@ Template.userPosts.onRendered( function () {
                         '<a href="/{{userID}}/{{_id}}"><h3>{{postTitle}}</h3></a><br>{{postContent}}<br><br>'+
                         '<span class="post-footer">Posted on {{postTimestamp}}</span><br><br></div></div>'+
                         '<br><br><br>{{/each}}</div>';
+    if(BlogTemplate.find({'userID':Template.currentData()}).fetch().length===0)
+        BlogTemplate.insert({'userID':Template.currentData(), 'template':template});
+    else
+        template = BlogTemplate.findOne({'userID':Template.currentData()}).template;
+    console.log(template);
     let eachLoop = template.substring(template.search("{{#each getPosts}}")+18, template.search("{{/each}}"));
-    console.log(Template.currentData());
-    Session.set('blogTemplate',eachLoop);
+    let blogUser = Template.currentData();
+    let blogPosts = BlogPosts.find({'userID':blogUser}).fetch();
+    let fullEachLoop = "";
+    $.each(blogPosts, function( index, value ) {
+        let tempEachLoop = eachLoop;
+        tempEachLoop = tempEachLoop.replace("{{userID}}", value.userID);
+        tempEachLoop = tempEachLoop.replace("{{_id}}", value._id);
+        tempEachLoop = tempEachLoop.replace("{{postTitle}}", value.postTitle);
+        tempEachLoop = tempEachLoop.replace("{{postContent}}", value.postContent);
+        tempEachLoop = tempEachLoop.replace("{{postTimestamp}}", value.postTimestamp);
+        fullEachLoop += tempEachLoop;
+    });
+    let templateStart = template.substring(0, template.search("{{#each getPosts}}"));
+    let templateEnd = template.substring(template.search("{{/each}}")+9);
+    let fullTemplate = templateStart+fullEachLoop+templateEnd;
+    Session.set('blogTemplate',fullTemplate);
+    //console.log(templateStart);
+    console.log(fullTemplate);
+    //console.log(templateEnd);
     //console.log(Session.get('blogTemplate'));
 }); 
 
 Template.userPosts.helpers({
 	getPosts: function(){
-        return Template.currentData();
+        return Session.get('blogTemplate');
     },
 /*    headerTemplate: function(){
 		return BlogTemplate.findOne().header;

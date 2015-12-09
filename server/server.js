@@ -43,6 +43,10 @@ Meteor.startup(function () {
 
     editProfile: function(userID, firstName, lastName, blogTitle){
       Meteor.users.update(userID,{$set:{'profile.firstName': firstName, 'profile.lastName':lastName, 'profile.blogTitle':blogTitle  }});
+    },
+
+    updateTemplate: function(userID, template){
+      BlogTemplate.update({'userID':userID},{ $set: {'template':template}});
     }
   });
 });
