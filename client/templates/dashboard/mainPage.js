@@ -1,9 +1,10 @@
 Template.mainPage.helpers({
 	currentUser: function(){
-		if(Meteor.user()==null){
+		return Meteor.user();
+		/*if(Meteor.user()==null){
 			return false;
 		}
 		else
-			return true;
+			return true;*/
     }
 });
