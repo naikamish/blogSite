@@ -1,23 +1,17 @@
 Template.editTemplate.onRendered(function () {
-	var ace = AceEditor.instance("archy",{theme:"twilight", mode:"html"});
+	var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/twilight");
+    editor.getSession().setMode("ace/mode/html");
 	let template = BlogTemplate.findOne({'userID':Meteor.userId()}).template;
-    //console.log(template);
-  /*  ace.getSession().on('change', function(e) {
-    // update the File collection
-	    File.update({_id: Session.get("file")}, 
-	      { $set : 
-	        { 
-	          contents : editor.getValue()
-	        }
-	      });
-	});*/
+	editor.setValue(template);
 
-   // $('#templateCode').val(template);
-    ace.setValue(template);
+/*	var ace = AceEditor.instance("archy",{theme:"twilight", mode:"html"});
+	let template = BlogTemplate.findOne({'userID':Meteor.userId()}).template;
+	ace.setValue(template);*/
 
 
     $( "#saveCode" ).click(function() {
-    	console.log(ace.getValue());
-  		Meteor.call('updateTemplate', Meteor.userId(), ace.getValue());
+    	console.log(editor.getValue());
+  		Meteor.call('updateTemplate', Meteor.userId(), editor.getValue());
 	});
 });

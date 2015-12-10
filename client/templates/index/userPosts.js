@@ -5,15 +5,17 @@ Template.userPosts.onRendered( function () {
                         '<span class="post-footer">Posted on {{postTimestamp}}</span><br><br></div></div>'+
                         '<br><br><br>{{/each}}</div>';*/
 
-    let template = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1 id='blogTitle'>My Blog</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
+    let template = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1 id='blogTitle'>{{blogTitle}}</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
     if(BlogTemplate.find({'userID':Template.currentData()}).fetch().length===0)
         BlogTemplate.insert({'userID':Template.currentData(), 'template':template});
     else
         template = BlogTemplate.findOne({'userID':Template.currentData()}).template;
-    console.log(template);
-    let eachLoop = template.substring(template.search("{{#each getPosts}}")+18, template.search("{{/each}}"));
     let blogUser = Template.currentData();
     let blogPosts = BlogPosts.find({'userID':blogUser}).fetch();
+    let blogTitle = Meteor.users.findOne({'_id':blogUser}).profile.blogTitle;
+    template = template.replace("{{blogTitle}}", blogTitle);
+
+    let eachLoop = template.substring(template.search("{{#each getPosts}}")+18, template.search("{{/each}}"));
     let fullEachLoop = "";
     $.each(blogPosts, function( index, value ) {
         let tempEachLoop = eachLoop;

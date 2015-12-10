@@ -1,3 +1,15 @@
+<template name="mainPage">
+            {{#if currentUser}}
+                {{> dashboard}}
+            {{else}}
+                {{> loginPage}}
+            {{/if}}
+</template>
+
+<template name="loginPage">
+Please Login
+</template>
+
 <template name="dashboard">
 	<div class="container-fluid">
       <div class="row">
@@ -5,16 +17,14 @@
           <ul class="nav nav-sidebar">
             <li class="dashboardPill active" id="dashboardHome"><a href="#">Dashboard</a></li>
             <li class="dashboardPill" id="addPost"><a href="#">Create Post</a></li>
-            <li class="dashboardPill" id="managePosts"><a href="#">Posts</a></li>
+            <li class="dashboardPill" id="managePosts"><a href="#">Your Posts</a></li>
             <li class="dashboardPill" id="manageYourComments"><a href="#">Your Comments</a></li>
             <li class="dashboardPill" id="manageBlogComments"><a href="#">Blog Comments</a></li>
             <li class="dashboardPill" id="manageProfile"><a href="#">Edit Profile</a></li>
             <li class="dashboardPill" id="editTemplate"><a href="#">Edit Template</a></li>
           </ul>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Welcome Back</h1>
-        </div>
+        
         <div class="row">
         	{{#if dashboardPill 'dashboardHome'}}
                 {{> dashboardHome}}
@@ -44,6 +54,9 @@
 </template>
     
 <template name="dashboardHome">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Welcome Back, {{loggedInUser}}</h1>
+    </div>
     {{#each getUsers}}
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
             <a href="/{{_id}}">{{_id}}</a>
@@ -52,6 +65,9 @@
 </template>
 
 <template name="addPost">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Create Post</h1>
+    </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         Post Title
         <br>
@@ -68,6 +84,9 @@
 </template>
 
 <template name="managePosts">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Your Posts</h1>
+    </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
             <table class="table table-hover">
@@ -94,6 +113,9 @@
 </template>
 
 <template name="manageYourComments">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Your Comments</h1>
+    </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
             <table class="table table-hover">
@@ -120,6 +142,9 @@
 </template>
 
 <template name="manageBlogComments">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Blog Comments</h1>
+    </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form name="postsForm">
             <table class="table table-hover">
@@ -148,6 +173,9 @@
 </template>
 
 <template name="manageProfile">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Edit Profile</h1>
+    </div>
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
         <form class="form-horizontal">
           <div class="form-group">
@@ -178,15 +206,18 @@
 </template>
 
 <template name="editTemplate">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Edit Template</h1>
+    </div>
     <style>
-    #archy {
+    #editor {
         width: 100%;
         height: 500px;
     }
     </style>
     <div class="row">
         <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3">
-            <pre id='archy'></pre>
+            <div id="editor"></div>
             <button id="saveCode">Add</button>
         </div>
 

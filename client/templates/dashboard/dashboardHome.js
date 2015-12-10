@@ -1,6 +1,6 @@
 Template.dashboardHome.helpers({
 	loggedInUser: function(){
-    	return Meteor.userId();
+    	return Meteor.user() && Meteor.user().profile.firstName;
     },
 
 	getUsers: function(){
