@@ -38,13 +38,15 @@ Meteor.startup(function () {
       Meteor.users.update(userID,{$set:{'profile.firstName': firstName, 'profile.lastName':lastName, 'profile.blogTitle':blogTitle  }});
     },
 
-    updateTemplate: function(userID, template){
-      BlogTemplate.update({'userID':userID},{ $set: {'template':template}});
+    updateTemplate: function(userID, postsTemplate, individualPostTemplate, cssTemplate){
+      BlogTemplate.update({'userID':userID},{ $set: {'postsTemplate':postsTemplate, 'individualPostTemplate':individualPostTemplate, 'cssTemplate':cssTemplate}});
     },
 
     setDefaultTemplate: function(userID){
-      let template = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1 id='blogTitle'>{{blogTitle}}</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
-      BlogTemplate.insert({'userID':userID, 'template':template})
+      let postsTemplate = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"jumbotron\">\n        <h1 id='blogTitle'>{{blogTitle}}</h1>\n    </div>\n    {{#each getPosts}}\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <a href=\"/{{userID}}/{{_id}}\">\n                <h3>{{postTitle}}</h3>\n            </a>\n            <br>{{postContent}}<br><br>\n            <span class=\"post-footer\">Posted on {{postTimestamp}}</span>\n            <br><br>\n        </div>\n    </div>\n    <br><br><br>\n    {{/each}}\n</div>"
+      let individualPostTemplate = "<div class=\"container-fluid container-userPosts\">\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <h3>{{postTitle}}</h3>\n            <br>\n            {{postContent}}\n        </div>\n    </div>\n    <br><br><br>\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <h2>Comments</h2>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            {{#each postComments}}\n                <span class=\"bold-span\">{{commentUserID}}</span>\n                <br>\n                {{commentContent}}\n                <br>\n                <span class=\"comment-footer\">{{commentTimestamp}}</span>\n                <br><br><br>\n            {{/each}}\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-xs-10 col-xs-offset-1 postDiv\">\n            <h4>Add Comment</h4>\n            <form>\n                <textarea id=\"postComment\"></textarea>\n                <br>\n                <input type=\"submit\" value=\"Submit\">\n            </form>\n        </div>\n    </div>\n</div>";
+      let cssTemplate = "<!--enter css code here-->";
+      BlogTemplate.insert({'userID':userID, 'postsTemplate':postsTemplate, 'individualPostTemplate':individualPostTemplate, 'cssTemplate':cssTemplate});
     }
   });
 });

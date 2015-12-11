@@ -1,5 +1,6 @@
 Template.userPosts.onRendered( function () {
-    template = BlogTemplate.findOne({'userID':Template.currentData()}).template;
+    templateObject = BlogTemplate.findOne({'userID':Template.currentData()});
+    template = templateObject.cssTemplate+templateObject.postsTemplate;
     let blogUser = Template.currentData();
     let blogPosts = BlogPosts.find({'userID':blogUser}).fetch();
     let blogTitle = Meteor.users.findOne({'_id':blogUser}).profile.blogTitle;
@@ -23,32 +24,11 @@ Template.userPosts.onRendered( function () {
     //console.log(templateStart);
     console.log(fullTemplate);
     //console.log(templateEnd);
-    //console.log(Session.get('blogTemplate'));
+    console.log(Session.get('blogTemplate'));
 }); 
 
 Template.userPosts.helpers({
 	getPosts: function(){
         return Session.get('blogTemplate');
-    },
-/*    headerTemplate: function(){
-		return BlogTemplate.findOne().header;
-    },
-    postStartTemplate: function(){
-		return BlogTemplate.findOne().postStart;
-    },
-    postLinksTemplate: function(){
-		return BlogTemplate.findOne().postLinks;
-    },
-    postTitleTemplate: function(){
-		return BlogTemplate.findOne().postTitle;
-    },
-    postContentTemplate: function(){
-		return BlogTemplate.findOne().postContent;
-    },
-    postTimestampTemplate: function(){
-		return BlogTemplate.findOne().postTimestamp;
-    },
-    footerTemplate: function(){
-		return BlogTemplate.findOne().footer;
-    }    */
+    }
 });
