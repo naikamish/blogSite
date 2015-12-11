@@ -1,9 +1,9 @@
 Template.editTemplate.onRendered(function () {
-	var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.getSession().setMode("ace/mode/html");
+	var postsEditor = ace.edit("postsEditor");
+    postsEditor.setTheme("ace/theme/twilight");
+    postsEditor.getSession().setMode("ace/mode/html");
 	let template = BlogTemplate.findOne({'userID':Meteor.userId()}).template;
-	editor.setValue(template);
+	postsEditor.setValue(template);
 
 /*	var ace = AceEditor.instance("archy",{theme:"twilight", mode:"html"});
 	let template = BlogTemplate.findOne({'userID':Meteor.userId()}).template;
@@ -11,7 +11,7 @@ Template.editTemplate.onRendered(function () {
 
 
     $( "#saveCode" ).click(function() {
-    	console.log(editor.getValue());
-  		Meteor.call('updateTemplate', Meteor.userId(), editor.getValue());
+    	console.log(postsEditor.getValue());
+  		Meteor.call('updateTemplate', Meteor.userId(), postsEditor.getValue());
 	});
 });

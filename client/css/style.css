@@ -4,6 +4,10 @@ textarea{
 	height:200px;
 }
 
+#createPostTitle{
+	width:100%;
+}
+
 body {
     padding-top: 50px;
   }
