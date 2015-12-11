@@ -40,3 +40,20 @@ body {
 .bold-span{
 	font-weight:bold;
 }
+
+.flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+
+.loginForm {
+    padding: 20px;
+    width: 25vw;
+
+    text-align: center;
+
+    background-color: white;
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.1);
+}
