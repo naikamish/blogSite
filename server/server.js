@@ -50,9 +50,8 @@ Meteor.startup(function () {
       BlogTemplate.insert({'userID':userID, 'postsTemplate':postsTemplate, 'individualPostTemplate':individualPostTemplate, 'cssTemplate':cssTemplate});
     },
 
-    validateLogin: function(email, password){
-      var valid = Meteor.users.find({"emails.address": email}, {limit: 1}).count()>0;
-      return "hi";
+    updatePost: function(postId, postTitle, postContent){
+      BlogPosts.update({'_id':postId},{ $set: {'postTitle':postTitle, 'postContent':postContent}});
     }
   });
 });

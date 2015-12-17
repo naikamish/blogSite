@@ -15,5 +15,11 @@ Template.managePosts.events({
   			} 
 		}
 		Meteor.call('removePosts', values);
+	},
+
+	'click .editPostButton': function(event,template){
+		event.preventDefault();
+		Session.set('editPostId', event.currentTarget.id);
+		Session.set('dashboardTemplate', 'editPostTemplate');
 	}
 });

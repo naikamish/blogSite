@@ -69,6 +69,10 @@
                             {{else}}
                                 {{#if dashboardPill 'editTemplate'}}
                                     {{> editTemplate}}
+                                {{else}}
+                                    {{#if dashboardPill 'editPostTemplate'}}
+                                        {{>editPostTemplate}}
+                                    {{/if}}
                                 {{/if}}
                             {{/if}}
                         {{/if}}
@@ -126,6 +130,7 @@
                         <td><input type="checkbox" name="posts" value="{{_id}}"></td>
                         <td>{{postTitle}}</td>
                         <td>{{postTimestamp}}</td>
+                        <td><button class="editPostButton" id="{{_id}}">Edit</button></td>
                     </tr>
                     {{/each}}
                 </tbody>
@@ -134,6 +139,23 @@
                 <input type="submit" value="Delete">
             </div>
         </form>
+    </div>
+</template>
+
+<template name="editPostTemplate">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Create Post</h1>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        Post Title
+        <br>
+        <input type="text" id="postTitle">
+        <br><br>
+        Post Content
+        <br>
+        <textarea id="editPostContent"></textarea>
+        <br>
+        <button id="addNewPost">Edit</button>
     </div>
 </template>
 
