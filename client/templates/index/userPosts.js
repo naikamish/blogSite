@@ -7,10 +7,9 @@ Template.userPosts.helpers({
         templateObject = BlogTemplate.findOne({'userID':Template.currentData()});
         template = templateObject.cssTemplate+templateObject.postsTemplate;
         let blogUser = Template.currentData();
-        let blogPosts = BlogPosts.find({'userID':blogUser}).fetch();
+        let blogPosts = BlogPosts.find({'userID':blogUser}, {sort: {postTimestamp: -1}}).fetch();
         let blogTitle = Meteor.users.findOne({'_id':blogUser}).profile.blogTitle;
         template = template.replace("{{blogTitle}}", blogTitle);
-
         let eachLoop = template.substring(template.search("{{#each getPosts}}")+18, template.search("{{/each}}"));
         let fullEachLoop = "";
         $.each(blogPosts, function( index, value ) {
@@ -19,7 +18,8 @@ Template.userPosts.helpers({
             tempEachLoop = tempEachLoop.replace("{{_id}}", value._id);
             tempEachLoop = tempEachLoop.replace("{{postTitle}}", value.postTitle);
             tempEachLoop = tempEachLoop.replace("{{postContent}}", value.postContent);
-            tempEachLoop = tempEachLoop.replace("{{postTimestamp}}", value.postTimestamp);
+            formattedDate = moment(value.postTimestamp).format('[Posted on] MMMM Do, YYYY [at] h:mm:ss a');
+            tempEachLoop = tempEachLoop.replace("{{postTimestamp}}", formattedDate);
             fullEachLoop += tempEachLoop;
         });
         let templateStart = template.substring(0, template.search("{{#each getPosts}}"));

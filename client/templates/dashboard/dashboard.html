@@ -1,25 +1,27 @@
 <template name="mainPage">
-            {{#if currentUser}}
-                {{> dashboard}}
-            {{else}}
+            {{#unless currentUser}}
                 {{> loginPage}}
-            {{/if}}
+            {{else}}
+                {{> dashboard}}
+            {{/unless}}
 </template>
 
 <template name="loginPage">
     <div class="flex-container">
         <div class="loginForm">
             <form class="form-horizontal">
+                <span id="errorMessage"></span>
+                <br>
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-12">
-                        <input type="email" class="form-control" id="inputEmail">
+                        <input type="email" required class="form-control" id="inputEmail">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-12">
-                        <input type="password" class="form-control" id="inputPassword">
+                        <input type="password" required class="form-control" id="inputPassword">
                     </div>
                 </div>
                 <div class="form-group">
@@ -241,9 +243,9 @@
     <div class="row">
         <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#postsEditor" data-toggle="tab">First</a></li>
-                <li><a href="#individualPostEditor" data-toggle="tab">Second</a></li>
-                <li><a href="#cssEditor" data-toggle="tab">Third</a></li>
+                <li class="active"><a href="#postsEditor" data-toggle="tab">Main Page</a></li>
+                <li><a href="#individualPostEditor" data-toggle="tab">Blog Post</a></li>
+                <li><a href="#cssEditor" data-toggle="tab">CSS</a></li>
             </ul>
             <div class="tab-content">
                 <div id="postsEditor" class="tab-pane active"></div>
@@ -251,7 +253,11 @@
                 <div id="cssEditor" class="tab-pane"></div>
             </div>
             <button id="saveCode">Add</button>
+            <button id="preview">Preview</button>
         </div>
-
+        <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3" id="templatePreview">
+        <br>
+            {{{getPosts}}}
+        </div>
     </div>
 </template>

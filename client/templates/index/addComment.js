@@ -16,9 +16,10 @@ Template.addComment.helpers({
 	    let fullEachLoop = "";
 	    $.each(postComments, function( index, value ) {
 	        let tempEachLoop = eachLoop;
-	        tempEachLoop = tempEachLoop.replace("{{commentUserID}}", value.commentUserID);
+	        tempEachLoop = tempEachLoop.replace("{{commentUserID}}", value.commentUserName);
 	        tempEachLoop = tempEachLoop.replace("{{commentContent}}", value.commentContent);
-	        tempEachLoop = tempEachLoop.replace("{{commentTimestamp}}", value.commentTimestamp);
+	        formattedDate = moment(value.commentTimestamp).format('[Posted on] MMMM Do, YYYY [at] h:mm:ss a');
+	        tempEachLoop = tempEachLoop.replace("{{commentTimestamp}}", formattedDate);
 	        fullEachLoop += tempEachLoop;
 	    });
 	    let templateStart = template.substring(0, template.search("{{#each postComments}}"));
@@ -35,8 +36,9 @@ Template.addComment.events({
 		$('#postComment').val('');
 		let postID = this._id;
 		let currentUser = Meteor.userId();
+		let currentUserName = Meteor.user().profile.firstName;
 		let postUserID = this.userID;
 		let commentTimestamp = new Date();
-		Meteor.call('addComment', postID, postUserID, commentContent, currentUser, commentTimestamp);
+		Meteor.call('addComment', postID, postUserID, commentContent, currentUser, commentTimestamp, currentUserName);
 	}
 });
