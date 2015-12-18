@@ -1,11 +1,3 @@
-<template name="mainPage">
-            {{#unless currentUser}}
-                {{> loginPage}}
-            {{else}}
-                {{> dashboard}}
-            {{/unless}}
-</template>
-
 <template name="loginPage">
     <div class="flex-container">
         <div class="loginForm">
