@@ -1,3 +1,9 @@
+Template.manageProfile.onRendered( function () {
+	$('#firstName').val(Meteor.user().profile.firstName);
+	$('#lastName').val(Meteor.user().profile.lastName);
+	$('#blogTitle').val(Meteor.user().profile.blogTitle);
+}); 
+
 Template.manageProfile.events({
 	'submit form': function(event,template){
 		event.preventDefault();
