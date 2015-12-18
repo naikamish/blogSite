@@ -1,0 +1,48 @@
+<template name="dashboard">
+	<div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="dashboardPill active" id="dashboardHome"><a href="#">Dashboard</a></li>
+            <li class="dashboardPill" id="addPost"><a href="#">Create Post</a></li>
+            <li class="dashboardPill" id="managePosts"><a href="#">Your Posts</a></li>
+            <li class="dashboardPill" id="manageYourComments"><a href="#">Your Comments</a></li>
+            <li class="dashboardPill" id="manageBlogComments"><a href="#">Blog Comments</a></li>
+            <li class="dashboardPill" id="manageProfile"><a href="#">Edit Profile</a></li>
+            <li class="dashboardPill" id="editTemplate"><a href="#">Edit Template</a></li>
+          </ul>
+        </div>
+        {{#if dashboardPill 'dashboardHome'}}
+            {{> dashboardHome}}
+        {{else}}
+            {{#if dashboardPill 'addPost'}}
+                {{> addPost}}
+            {{else}}
+                {{#if dashboardPill 'managePosts'}}
+                    {{> managePosts}}
+                {{else}}
+                    {{#if dashboardPill 'manageYourComments'}}
+                        {{> manageYourComments}}
+                    {{else}}
+                        {{#if dashboardPill 'manageBlogComments'}}
+                            {{> manageBlogComments}}
+                        {{else}}
+                            {{#if dashboardPill 'manageProfile'}}
+                                {{> manageProfile}}
+                            {{else}}
+                                {{#if dashboardPill 'editTemplate'}}
+                                    {{> editTemplate}}
+                                {{else}}
+                                    {{#if dashboardPill 'editPostTemplate'}}
+                                        {{>editPostTemplate}}
+                                    {{/if}}
+                                {{/if}}
+                            {{/if}}
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        {{/if}}
+      </div>
+    </div>
+</template>

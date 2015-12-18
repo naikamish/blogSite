@@ -1,0 +1,25 @@
+<template name="editTemplate">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Edit Template</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#postsEditor" data-toggle="tab">Main Page</a></li>
+                <li><a href="#individualPostEditor" data-toggle="tab">Blog Post</a></li>
+                <li><a href="#cssEditor" data-toggle="tab">CSS</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="postsEditor" class="tab-pane active"></div>
+                <div id="individualPostEditor" class="tab-pane"></div>
+                <div id="cssEditor" class="tab-pane"></div>
+            </div>
+            <button id="saveCode">Add</button>
+            <button id="preview">Preview</button>
+        </div>
+        <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3" id="templatePreview">
+        <br>
+            {{{getPosts}}}
+        </div>
+    </div>
+</template>

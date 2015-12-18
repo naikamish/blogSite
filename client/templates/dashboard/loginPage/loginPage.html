@@ -1,0 +1,28 @@
+<template name="loginPage">
+    <div class="flex-container">
+        <div class="loginForm">
+            <form class="form-horizontal">
+                <span id="errorMessage"></span>
+                <br>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-12">
+                        <input type="email" required class="form-control" id="inputEmail">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-12">
+                        <input type="password" required class="form-control" id="inputPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn btn-default" id="loginButton">Login</button>
+                        <button class="btn btn-default" id="registerButton">Register</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</template>

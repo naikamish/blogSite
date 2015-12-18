@@ -21,7 +21,6 @@ Template.editTemplate.onRendered(function () {
     Session.set('postsTemplate', postsEditor.getValue());
 
 	$( "#saveCode" ).click(function() {
-    	console.log(postsEditor.getValue());
   		Meteor.call('updateTemplate', Meteor.userId(), postsEditor.getValue(), individualPostEditor.getValue(), cssEditor.getValue());
 	});
 
@@ -33,7 +32,7 @@ Template.editTemplate.onRendered(function () {
 
 Template.editTemplate.helpers({
     getPosts: function(){
-        template = Session.get('cssTemplate')+Session.get('postsTemplate');
+        let template = Session.get('cssTemplate')+Session.get('postsTemplate');
         let blogUser = Meteor.userId();
         let blogPosts = BlogPosts.find({'userID':blogUser}, {sort: {postTimestamp: -1}}).fetch();
         let numberOfPages = blogPosts.length;

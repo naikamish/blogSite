@@ -1,0 +1,29 @@
+<template name="managePosts">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Your Posts</h1>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <form name="postsForm">
+            <table class="table table-hover">
+                    <tr>
+                        <th> </th>
+                        <th>Blog Title</th>
+                        <th>Post Date</th>
+                    </tr>
+                <tbody>
+                    {{#each getPosts}}
+                    <tr>
+                        <td><input type="checkbox" name="posts" value="{{_id}}"></td>
+                        <td>{{postTitle}}</td>
+                        <td>{{postTimestamp}}</td>
+                        <td><button class="editPostButton" id="{{_id}}">Edit</button></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div>
+                <input type="submit" value="Delete">
+            </div>
+        </form>
+    </div>
+</template>

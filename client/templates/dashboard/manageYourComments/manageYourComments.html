@@ -1,0 +1,28 @@
+<template name="manageYourComments">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Your Comments</h1>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+        <form name="postsForm">
+            <table class="table table-hover">
+                    <tr>
+                        <th> </th>
+                        <th>Comment</th>
+                        <th>Post Date</th>
+                    </tr>
+                <tbody>
+                    {{#each getComments}}
+                    <tr>
+                        <td><input type="checkbox" name="posts" value="{{_id}}"></td>
+                        <td>{{commentContent}}</td>
+                        <td>{{commentTimestamp}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div>
+                <input type="submit" value="Delete">
+            </div>
+        </form>
+    </div>
+</template>
