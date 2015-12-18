@@ -7,10 +7,6 @@ Template.loginPage.events({
 			if(error){
 				$('#errorMessage').text(error.reason);
 			}
-			if (Router.current().route.name === 'loginPage') {
-		        // if we are on the login route, we want to redirect the user
-		        return Router.go('dashboard');
-		    }
 		});
 	},
 
