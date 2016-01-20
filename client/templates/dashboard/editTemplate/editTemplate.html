@@ -8,18 +8,15 @@
                 <li class="active"><a href="#postsEditor" data-toggle="tab">Main Page</a></li>
                 <li><a href="#individualPostEditor" data-toggle="tab">Blog Post</a></li>
                 <li><a href="#cssEditor" data-toggle="tab">CSS</a></li>
+                <li><a href="#templatePreview" data-toggle="tab">Preview</a></li>
             </ul>
             <div class="tab-content">
                 <div id="postsEditor" class="tab-pane active"></div>
                 <div id="individualPostEditor" class="tab-pane"></div>
                 <div id="cssEditor" class="tab-pane"></div>
+                <div id="templatePreview" class="tab-pane">{{{getPosts}}}</div>
             </div>
-            <button id="saveCode">Add</button>
-            <button id="preview">Preview</button>
-        </div>
-        <div class="col-sm-7 col-sm-offset-4 col-md-8 col-md-offset-3" id="templatePreview">
-        <br>
-            {{{getPosts}}}
+            <button id="saveCode">Save</button>
         </div>
     </div>
 </template>

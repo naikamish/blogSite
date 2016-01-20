@@ -4,8 +4,8 @@ Template.userPosts.onRendered( function () {
 
 Template.userPosts.helpers({
 	getPosts: function(){
-        templateObject = BlogTemplate.findOne({'userID':Template.currentData()});
-        template = templateObject.cssTemplate+templateObject.postsTemplate;
+        let templateObject = BlogTemplate.findOne({'userID':Template.currentData()});
+        let template = templateObject.cssTemplate+templateObject.postsTemplate;
         let blogUser = Template.currentData();
         let blogPosts = BlogPosts.find({'userID':blogUser}, {sort: {postTimestamp: -1}}).fetch();
         let numberOfPages = blogPosts.length;

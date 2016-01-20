@@ -24,7 +24,7 @@ Template.editTemplate.onRendered(function () {
   		Meteor.call('updateTemplate', Meteor.userId(), postsEditor.getValue(), individualPostEditor.getValue(), cssEditor.getValue());
 	});
 
-    $( "#preview" ).click(function() {
+    $( "li" ).click(function() {
         Session.set('cssTemplate',cssEditor.getValue());
         Session.set('postsTemplate', postsEditor.getValue());
     });
