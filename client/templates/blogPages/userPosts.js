@@ -38,13 +38,13 @@ Template.userPosts.helpers({
         fullPagesLoop += numberOfPages>4&&(page<5||numberOfPages<8) ? pagesLoop.replace("{{page#}}",5):"";
         fullPagesLoop += numberOfPages>5&&numberOfPages<8 ? pagesLoop.replace("{{page#}}",6):"";
         fullPagesLoop += numberOfPages>6&&numberOfPages<8 ? pagesLoop.replace("{{page#}}",7):"";
-        fullPagesLoop += numberOfPages>7&&page>4 ? "...":"";
+        fullPagesLoop += numberOfPages>7&&page>4 ? "<span id='ellipse'>...</span>":"";
 
         fullPagesLoop += page>4&&page<numberOfPages-3 ? pagesLoop.replace("{{page#}}",page-1):"";
         fullPagesLoop += page>4&&page<numberOfPages-3 ? pagesLoop.replace("{{page#}}",page):"";
         fullPagesLoop += page>4&&page<numberOfPages-3 ? pagesLoop.replace("{{page#}}",page+1):"";
 
-        fullPagesLoop += numberOfPages>7&&page<numberOfPages-3 ? "...":"";
+        fullPagesLoop += numberOfPages>7&&page<numberOfPages-3 ? "<span id='ellipse'>...</span>":"";
         fullPagesLoop += numberOfPages>7&&page>numberOfPages-4 ? pagesLoop.replace("{{page#}}",numberOfPages-4):"";
         fullPagesLoop += numberOfPages>7&&page>numberOfPages-4 ? pagesLoop.replace("{{page#}}",numberOfPages-3):"";
         fullPagesLoop += numberOfPages>7&&page>numberOfPages-4 ? pagesLoop.replace("{{page#}}",numberOfPages-2):"";
